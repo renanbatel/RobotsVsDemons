@@ -11,16 +11,18 @@ public class ScriptMainCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float positionX = this.Zeon.transform.position.x + this.XOffset;
-        float positionY = this.Zeon.transform.position.y + this.YOffset;
+        if (this.Zeon) {
+            float positionX = this.Zeon.transform.position.x + this.XOffset;
+            float positionY = this.Zeon.transform.position.y + this.YOffset;
 
-        if (positionX < 0) {
-            positionX = 0;
+            if (positionX < 0) {
+                positionX = 0;
+            }
+            if (positionY < 0 && positionY > -5) {
+                positionY = 0;
+            }
+            
+            this.transform.position = new Vector3(positionX, positionY, -10);
         }
-        if (positionY < 0) {
-            positionY = 0;
-        }
-        
-        this.transform.position = new Vector3(positionX, positionY, -10);
     }
 }
