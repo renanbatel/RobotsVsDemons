@@ -50,4 +50,9 @@ public class ScriptGameController : MonoBehaviour
         }
         this.ScriptZeon.Die();
     }
+
+    public bool IsPaused()
+    {
+        return Time.timeScale == 0;
+    }
 }

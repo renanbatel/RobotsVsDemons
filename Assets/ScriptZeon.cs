@@ -12,6 +12,7 @@ public class ScriptZeon : MonoBehaviour
     private Rigidbody2D Rigidbody2D;
     private Animator Animator;
     private AudioSource AudioSource;
+    private ScriptGameController ScriptGameController;
     private bool IsGoingRight;
     private bool IsOnTheGround;
     private bool HasJumped;
@@ -39,7 +40,9 @@ public class ScriptZeon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.HandleMovement();
+        if (!this.ScriptGameController.IsPaused()) {
+            this.HandleMovement();
+        }
     }
 
     void SetupValues()
@@ -47,6 +50,7 @@ public class ScriptZeon : MonoBehaviour
         this.Rigidbody2D = GetComponent<Rigidbody2D>();
         this.Animator = GetComponent<Animator>();
         this.AudioSource = GetComponent<AudioSource>();
+        this.ScriptGameController = (GameObject.Find("GameController")).GetComponent<ScriptGameController>();
         this.IsGoingRight = true;
     }
 
