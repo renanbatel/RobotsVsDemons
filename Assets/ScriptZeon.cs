@@ -20,7 +20,7 @@ public class ScriptZeon : MonoBehaviour
     public GameObject Feet;
     public LayerMask LayerMask;
     public float Velocity = 5;
-    public int JumpForce = 700;
+    public int JumpForce = 850;
 
     private int GetState()
     {
