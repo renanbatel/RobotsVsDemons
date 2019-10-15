@@ -9,6 +9,7 @@ public class ScriptGameController : MonoBehaviour
     private ScriptZeon ScriptZeon;
 
     public GameObject Zeon;
+    public GameObject Target;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +20,7 @@ public class ScriptGameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)) {
+        if (this.Zeon && Input.GetKeyDown(KeyCode.Escape)) {
             this.PauseGame();
         }
     }
@@ -49,6 +50,13 @@ public class ScriptGameController : MonoBehaviour
             this.AudioSource.Play();
         }
         this.ScriptZeon.Die();
+        this.PauseGame();
+    }
+
+    public void FinishGame()
+    {
+        Destroy(this.Target);
+        this.PauseGame();
     }
 
     public bool IsPaused()
